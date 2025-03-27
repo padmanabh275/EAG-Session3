@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Analysis</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    :root {
+      --primary-color: #1a237e;
+      --secondary-color: #283593;
+      --success-color: #4caf50;
+      --danger-color: #f44336;
+      --text-color: #333;
+      --light-bg: #f5f6fa;
+      --border-color: #e0e0e0;
+    }
+
+    body {
+      width: 600px;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header h1 {
+      color: white;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .search-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--primary-color);
+    }
+
+    select {
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background-color: white;
+      font-size: 14px;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background: var(--secondary-color);
+    }
+
+    #results {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .stock-info {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: var(--light-bg);
+      border-radius: 8px;
+    }
+
+    .stock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .stock-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .stock-price {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .stock-change {
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    .positive {
+      color: var(--success-color);
+    }
+
+    .negative {
+      color: var(--danger-color);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .metric-card {
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .metric-value {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .ai-insights {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f8f9ff;
+      border-left: 4px solid var(--primary-color);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .ai-insights h4 {
+      color: var(--primary-color);
+      margin: 0 0 15px 0;
+      font-size: 16px;
+    }
+
+    .data-source {
+      display: block;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #666;
+      text-align: right;
+      font-style: italic;
+    }
+
+    #error-message {
+      padding: 15px;
+      background-color: #ffebee;
+      color: var(--danger-color);
+      border-radius: 6px;
+      margin: 10px 0;
+      display: none;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: var(--primary-color);
+      display: none;
+    }
+
+    .loading::after {
+      content: "...";
+      animation: dots 1.5s steps(5, end) infinite;
+    }
+
+    @keyframes dots {
+      0%, 20% { content: "."; }
+      40% { content: ".."; }
+      60%, 100% { content: "..."; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="input-section">
+      <input type="text" id="stockSymbol" placeholder="Enter stock symbol (e.g., TCS)">
+      <button id="analyzeButton">Analyze</button>
+    </div>
+    <div id="result"></div>
+  </div>
+  <script src="agent.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html> 
