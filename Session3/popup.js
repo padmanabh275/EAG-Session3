@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
         // Initialize the agent with your API keys
         const agent = new StockAnalysisAgent(
-            'AIzaSyD5-pnWcuac8gRUeOnMiXleStD5DKTEgkw',  // Replace with your actual Gemini API key
-            'TZG8A32K00JY1NZJ' // Replace with your actual Alpha Vantage key
+            'Gemini KEY',  // Replace with your actual Gemini API key
+            'Alpha Vantage Key' // Replace with your actual Alpha Vantage key
         );
 
         // Get the analyze button
